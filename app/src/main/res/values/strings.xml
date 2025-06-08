@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">NimitAgarwalTask</string>
+    <string name="net_qty">NET QTY: %1$s</string>
+    <string name="ltp">LTP: ₹%1$s</string>
+    <string name="p_l"><![CDATA[P&L: ₹%1$s]]></string>
+    <string name="profit_loss"><![CDATA[Profit & Loss*]]></string>
+    <string name="profile">Profile</string>
+    <string name="sort">Sort</string>
+    <string name="search">Search</string>
+    <string name="no_items_in_your_watchlist">No items in your Watchlist</string>
+    <string name="no_items_in_your_orders">No items in your Orders</string>
+    <string name="no_items_in_your_funds">No items in your Funds</string>
+    <string name="no_items_in_your_invest">No items in your Invest</string>
+    <string name="watchlist_icon">Watchlist Icon</string>
+</resources>
