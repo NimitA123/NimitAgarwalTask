@@ -3,6 +3,8 @@
 A simple and modern Android application built using **Jetpack Compose** that displays stock holdings with real-time P&L (Profit & Loss), using **MVVM Clean Architecture**, local caching, and test coverage.
 
 ---
+## Git clone 
+https://github.com/NimitA123/NimitAgarwalTask.git
 
 ## 🚀 Features
 
