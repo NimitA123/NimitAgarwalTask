@@ -20,10 +20,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Divider
+
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import java.util.Locale
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -40,7 +42,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHostController
+
 import com.example.nimitagarwaltask.R
 import com.example.nimitagarwaltask.data.local.HoldingsEntity
 import com.example.nimitagarwaltask.presentation.components.CommonText12
@@ -57,8 +59,7 @@ import com.example.nimitagarwaltask.utils.UiState
 
 @Composable
 fun HoldingsScreen(
-    navHostController: NavHostController,
-    modifier: Modifier = Modifier,
+
     viewModel: HoldingsViewModel = hiltViewModel(),
 ) {
     LaunchedEffect(Unit) {
@@ -121,7 +122,7 @@ fun PortfolioScreen(
         ) {
             items(portfolioItems, key = { it.symbol }) { item ->
                 PortfolioItemRow(item)
-                Divider(color = Color.LightGray, thickness = 0.5.dp)
+                HorizontalDivider(color = Color.LightGray, thickness = 0.5.dp)
             }
         }
 
@@ -168,7 +169,7 @@ fun PortfolioItemRow(item: HoldingsEntity) {
             val totalPnL = (item.ltp - item.avgPrice) * item.quantity
 
             val isProfit = totalPnL >= 0
-            val color = if (isProfit) Green else Red
+
             val sign = if (isProfit) "" else "-"
             val formattedValue = "%.2f".format(kotlin.math.abs(totalPnL))
             Row(
@@ -229,16 +230,18 @@ fun ProfitLossCard(portfolioItems: List<HoldingsEntity>) {
                 )
                 Row(verticalAlignment = Alignment.CenterVertically) {
 
-                    CommonText14(
-                        text = "${"%.2f".format(totalPnL)} (₹${
-                            String.format(
-                                "%.2f",
-                                if (totalInvestment > 0) totalPnL / totalInvestment * 100 else 0.0
+
+                            CommonText14(
+                                text = String.format(
+                                    Locale.US,
+                                    "%.2f (₹%.2f%%)",
+                                    totalPnL,
+                                    if (totalInvestment > 0) totalPnL / totalInvestment * 100 else 0.0
+                                ),
+                                fontWeight = FontWeight.Medium,
+                                color = if (totalPnL >= 0) Green else Red
                             )
-                        }%)",
-                        fontWeight = FontWeight.Medium,
-                        color = if (totalPnL >= 0) Green else Red
-                    )
+
                     Icon(
                         imageVector = Icons.Default.KeyboardArrowDown,
                         contentDescription = "Expand",

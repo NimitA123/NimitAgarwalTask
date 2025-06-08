@@ -15,9 +15,7 @@ class SessionManager @Inject constructor(
         private const val KEY_AUTH_TOKEN = "auth_token"
     }
 
-    fun saveToken(token: String) {
-        prefs.edit() { putString(KEY_AUTH_TOKEN, token) }
-    }
+
 
     fun getToken(): String? {
         return prefs.getString(KEY_AUTH_TOKEN, null)

@@ -20,7 +20,7 @@ fun HoldingsNavGraph(navHostController: NavHostController, modifier: Modifier) {
         modifier = modifier
     ) {
         composable(BottomNavItem.Portfolio.route) {
-            HoldingsScreen(navHostController, modifier)
+            HoldingsScreen()
         }
         composable(BottomNavItem.Funds.route) {
             FundsScreen()
